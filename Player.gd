@@ -10,22 +10,24 @@ var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$AnimatedSprite.play("Idle")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity.y += FALL_ACCELERATION_UP
 	
-	if Input.is_action_pressed("ui_right"):
-		velocity.x = move_toward(velocity.x, MAX_SPEED, RUN_ACCELERATION)
-	elif Input.is_action_pressed("ui_left"):
-		velocity.x = move_toward(velocity.x, -1*MAX_SPEED, RUN_ACCELERATION)
+	var input = Vector2.ZERO
+	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	if input.x:
+		velocity.x = move_toward(velocity.x, input.x*MAX_SPEED, RUN_ACCELERATION)
+		$AnimatedSprite.animation = "Run"
 	else:
 		velocity.x = move_toward(velocity.x, 0, RUN_ACCELERATION)
+		$AnimatedSprite.animation = "Idle"
 	
 	if is_on_floor():
 		if Input.is_action_pressed("ui_up"):
