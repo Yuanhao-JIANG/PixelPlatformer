@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 export var MAX_SPEED = 90
 export var RUN_ACCELERATION = 30
