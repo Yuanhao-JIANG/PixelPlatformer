@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Spikes.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World.gd" type="Script" id=4]
+[ext_resource path="res://WalkingEnemy.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 tile_data = PoolIntArray( 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196624, 1, 0, 262147, 1, 0, 262160, 1, 0, 327683, 1, 0, 327696, 1, 0, 393219, 1, 0, 393220, 0, 0, 393231, 1, 0, 393232, 1, 0, 458755, 1, 0, 458766, 1, 0, 458767, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0 )
@@ -14,6 +17,12 @@ position = Vector2( 171, 162 )
 
 [node name="Spikes2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 189, 162 )
+
+[node name="WalkingEnemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 135, 135 )
+
+[node name="WalkingEnemy2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 99, 99 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 225, 126 )
